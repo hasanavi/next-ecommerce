@@ -1,0 +1,17 @@
+.container {
+  text-align: center;
+}
+
+.logo {
+  height: 100px;
+}
+
+.header {
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px;
+  border-bottom: 2px solid #000000;
+}

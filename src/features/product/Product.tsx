@@ -28,6 +28,7 @@ const Products: FC<ProductsProp> = ({ product }) => {
         <p>{product.description}</p>
 
         <button
+          data-testid="add-to-cart-btn"
           aria-label="Add to cart"
           className={styles.addToBag}
           onClick={handleAddToCart}

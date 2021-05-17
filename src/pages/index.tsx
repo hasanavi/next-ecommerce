@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { NextPage } from "next";
 import Layout from "../components/Layout/Layout";
 
 import Categories from "../features/categories/Categories";

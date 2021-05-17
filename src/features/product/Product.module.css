@@ -1,0 +1,37 @@
+.productContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .productContainer {
+    flex-direction: row;
+  }
+}
+
+.imageContainer {
+  width: 40%;
+  margin-bottom: 40px;
+  margin-right: 30px;
+}
+
+.imageContainer img {
+  max-width: 100%;
+  max-height: 400px;
+  display: block;
+}
+
+.description {
+  width: 50%;
+}
+.description p {
+  margin-bottom: 20px;
+}
+
+.addToBag {
+  width: 300px;
+  padding: 15px;
+  border: 0;
+  color: white;
+  background: black;
+}

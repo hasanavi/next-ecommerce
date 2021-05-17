@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from "next";
+import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
@@ -14,7 +14,7 @@ const ProductsPage: NextPage = () => {
   const { status, list, error } = useAppSelector((store) => store.products);
 
   useEffect(() => {
-    if (category && list.length <= 0) {
+    if (category) {
       dispatch(getProducts(category as string));
     }
   }, [category]);
@@ -25,7 +25,7 @@ const ProductsPage: NextPage = () => {
       <h2>Category - {category}</h2>
       {status === "loading" ? <div>Loading</div> : null}
       {error ? <div>{error}</div> : null}
-      {list.length > 0 ? <Products list={list} /> : null}
+      {status === "success" ? <Products list={list} /> : null}
     </Layout>
   );
 };

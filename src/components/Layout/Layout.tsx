@@ -2,6 +2,7 @@ import type { FC } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import Cart from "../../features/cart/Cart";
 import styles from "./Layout.module.css";
 
 const siteTitle = "Harvey Nicholas";
@@ -30,6 +31,7 @@ const Layout: FC<LayoutProps> = ({ children, isHome }) => {
             />
           </a>
         </Link>
+        <Cart />
       </header>
       <main>{children}</main>
     </div>

@@ -29,7 +29,7 @@ const Products: FC<ProductsProp> = ({ list }) => {
       <div className={gridClasses.join(" ")}>
         {list.map((product: Product) => (
           <div className={cardClasses.join(" ")} key={product.id}>
-            <Link href={`/product/${product}`}>
+            <Link href={`/product/${product.id}`}>
               <a>
                 <div className={styles.imageContainer}>
                   <img src={product.image} alt={product.title} />

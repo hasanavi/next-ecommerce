@@ -1,33 +1,34 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchCategories } from "./productsAPI";
+import { fetchProducts } from "./productsAPI";
+import type { Product } from "./productsAPI";
 
-export const getCategories = createAsyncThunk(
-  "categories/fetchCategories",
-  async () => await fetchCategories()
+export const getProducts = createAsyncThunk(
+  "products/fetchProducts",
+  async (category: string) => await fetchProducts(category)
 );
 
-export interface CategoriesState {
-  list: string[];
+export interface ProductsState {
+  list: Product[];
   status: "loading" | "success" | "failed";
   error: string;
 }
 
-const initialState: CategoriesState = {
+const initialState: ProductsState = {
   list: [],
   status: null,
   error: null,
 };
 
-const categoriesSlide = createSlice({
-  name: "categories",
+const productsSlice = createSlice({
+  name: "products",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getCategories.pending, (state) => {
+      .addCase(getProducts.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(getCategories.fulfilled, (state, { payload }) => {
+      .addCase(getProducts.fulfilled, (state, { payload }) => {
         if (Array.isArray(payload)) {
           state.status = "success";
           state.list = payload;
@@ -36,10 +37,10 @@ const categoriesSlide = createSlice({
           state.status = "failed";
         }
       })
-      .addCase(getCategories.rejected, (state) => {
+      .addCase(getProducts.rejected, (state) => {
         state.status = "failed";
       });
   },
 });
 
-export default categoriesSlide.reducer;
+export default productsSlice.reducer;

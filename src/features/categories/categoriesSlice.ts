@@ -18,7 +18,7 @@ const initialState: CategoriesState = {
   error: null,
 };
 
-const categoriesSlide = createSlice({
+const categoriesSlice = createSlice({
   name: "categories",
   initialState,
   reducers: {},
@@ -42,4 +42,4 @@ const categoriesSlide = createSlice({
   },
 });
 
-export default categoriesSlide.reducer;
+export default categoriesSlice.reducer;

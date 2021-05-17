@@ -1,9 +1,14 @@
-.row {
+/* .row {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.row::after {
+  content: "";
+  flex: auto;
 }
 
 .column {
@@ -18,14 +23,84 @@
   .column {
     flex: 1;
   }
+} */
+
+.grid {
+  display: grid;
+  grid-gap: 1rem;
+  justify-items: center;
+}
+
+.listView {
+  grid-template-columns: 1fr;
+  justify-items: flex-start;
+}
+
+@media screen and (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .listView {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .listView {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
-  padding: 15px;
-  padding-left: 0;
   text-align: center;
+  width: 230px;
 }
 
 .card p {
   margin: 10px 0;
+  text-transform: capitalize;
+  text-align: left;
+}
+
+.card .imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.card .imageContainer img {
+  width: 100%;
+  max-height: 300px;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.cardList {
+  width: auto;
+}
+
+.cardList .imageContainer {
+  width: 300px;
+  height: auto;
+}
+
+.cardList .imageContainer img {
+  max-width: 230px;
+}
+
+.cardList a {
+  display: flex;
+  align-items: center;
+}
+
+.cardList a p {
+  margin-left: 20px;
+  width: 200px;
 }

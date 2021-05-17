@@ -10,21 +10,19 @@ type CategoriesProps = {
 const Categories: FC<CategoriesProps> = ({ list }) => {
   return (
     <div>
-      <div className={styles.row}>
+      <div className={styles.grid}>
         {list.map((category, index) => (
-          <Link href={`/categories/${category}`}>
-            <a>
-              <div className={styles.col} key={category}>
-                <div className={styles.card}>
-                  <img
-                    src={`https://picsum.photos/200/300?random=${index}`}
-                    alt={category}
-                  />
-                  <p>{category}</p>
-                </div>
-              </div>
-            </a>
-          </Link>
+          <div className={styles.card} key={category}>
+            <Link href={`/categories/${category}`}>
+              <a>
+                <img
+                  src={`https://picsum.photos/230/300?random=${index}`}
+                  alt={category}
+                />
+                <p>{category}</p>
+              </a>
+            </Link>
+          </div>
         ))}
       </div>
     </div>

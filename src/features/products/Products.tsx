@@ -1,30 +1,45 @@
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useState } from "react";
+import type { Product } from "./productsAPI";
 
 import styles from "../../styles/util.module.css";
+import productStyle from "./Products.module.css";
 
-type ProductsProps = {
-  list: string[];
-};
+interface ProductsProp {
+  list: Product[];
+}
 
-const Products: FC<ProductsProps> = ({ list }) => {
+const Products: FC<ProductsProp> = ({ list }) => {
+  const [isGridView, setIsGridView] = useState(true);
+
+  const handleLayout = () => {
+    setIsGridView(!isGridView);
+  };
+
+  const gridClasses = [styles.grid, isGridView ? "" : styles.listView];
+  const cardClasses = [styles.card, isGridView ? "" : styles.cardList];
+
   return (
     <div>
-      <div className={styles.row}>
-        {list.map((category, index) => (
-          <Link href={`/categories/${category}`}>
-            <a>
-              <div className={styles.col} key={category}>
-                <div className={styles.card}>
-                  <img
-                    src={`https://picsum.photos/200/300?random=${index}`}
-                    alt={category}
-                  />
-                  <p>{category}</p>
+      <div className={productStyle.layoutselector}>
+        <button onClick={handleLayout}>
+          {isGridView ? "List" : "Grid"} View
+        </button>
+      </div>
+      <div className={gridClasses.join(" ")}>
+        {list.map((product: Product) => (
+          <div className={cardClasses.join(" ")} key={product.id}>
+            <Link href={`/product/${product}`}>
+              <a>
+                <div className={styles.imageContainer}>
+                  <img src={product.image} alt={product.title} />
                 </div>
-              </div>
-            </a>
-          </Link>
+
+                <p>{product.title}</p>
+                <p>£{product.price}</p>
+              </a>
+            </Link>
+          </div>
         ))}
       </div>
     </div>

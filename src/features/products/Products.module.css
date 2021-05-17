@@ -1,0 +1,9 @@
+.layoutselector {
+  margin: 15px 0;
+  text-align: right;
+}
+
+.layoutselector button {
+  width: 100px;
+  padding: 10px 15px;
+}
